@@ -10,8 +10,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.12.2",
     "@astrojs/check": "^0.8.2",
+    "@astrojs/preact": "^3.5.1",
+    "@astrojs/tailwind": "^5.1.0",
+    "astro": "^4.12.2",
+    "flowbite": "^2.4.1",
+    "preact": "^10.22.1",
+    "tailwindcss": "^3.4.6",
     "typescript": "^5.5.3"
   }
 }
