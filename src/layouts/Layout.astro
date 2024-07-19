@@ -1,4 +1,7 @@
 ---
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+
 interface Props {
 	title: string;
 }
@@ -12,13 +15,16 @@ const { title } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
+		<link rel="icon" type="image/svg+xml" href="/public/logo.png" />
+		<meta name="AstroRestuarant" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
 	<body>
+		<Header></Header>
 		<slot />
+		<Footer></Footer>
 	</body>
+	<script is:inline src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
 </html>
 <style is:global>
 	:root {
@@ -34,7 +40,7 @@ const { title } = Astro.props;
 	}
 	html {
 		font-family: system-ui, sans-serif;
-		background: #13151a;
+		background: var(--accent-light);
 		background-size: 224px;
 	}
 	code {
