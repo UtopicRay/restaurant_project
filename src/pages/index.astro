@@ -1,17 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
 import Hero from '../components/Hero.astro';
-import {useGetData} from '../hook/useGetData';
-
-const {data,isLoading,error,getRecipes}=useGetData();
-const init=async ()=>{ getRecipes({name:'',limit:'3'})}
-if(isLoading){
-	return (
-		
-	)
-}
-init();
+import {getRecipes} from '../services/recipes';
+const recipes=await getRecipes("","3");
+console.log(recipes)
 ---
 
 <Layout title="Welcome to Astro.">

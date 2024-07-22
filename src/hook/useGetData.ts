@@ -8,8 +8,8 @@ export function useGetData() {
   async function getRecipes({ name, limit }: { name: string; limit: string }) {
     await fetch(
       `https://dummyjson.com/recipes?limit=${limit ? limit : "10"}${
-        name ? `&select=${name}` : ""
-      },image`
+        name ? `&select=${name},image` : ",image"
+      }`
     )
       .then((response) => response.json())
       .then((data) => setData(data)).finally(()=>setIsLoading(false)).catch((error:Error)=>setError(error.message()));

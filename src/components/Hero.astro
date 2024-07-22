@@ -1,5 +1,5 @@
 <section class="h-screen grid grid-cols-2 place-items-center px-10">
-    <article>
+    <article class="max-w-[80%]">
         <h1 class="text-6xl font-bold">
             Embark on a Cosmic Culinary Journey at AstroRestuarant!
         </h1>
@@ -7,6 +7,21 @@
             Welcome to AstroRestuarant, where celestial flavors collide with earthly delights. Our cosmic menu features interstellar dishes crafted from the finest ingredients across the galaxy. From stardust-infused pastas to nebula-inspired desserts, every bite is an otherworldly experience. Join us under the starlit canopy and let your taste buds explore the universe!” 🌟🚀🪐
         </p>
     </article>
-    <article>
+    <article class="">
+        <img src="/R.png" class="max-w-full h-auto mr-2" alt="foto de chefs">
     </article>
 </section>
+<style>
+    img{
+        mask-image: linear-gradient(to top, transparent, white 20%);
+        animation: BounceEffect 3.5s infinite alternate ease-in-out;
+    }
+    @keyframes BounceEffect {
+        0%{
+            transform: translateY(-20px);
+        }
+        50%{
+            transform: translateY(20px);
+        }
+    }
+</style>
