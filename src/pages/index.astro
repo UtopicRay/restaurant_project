@@ -1,14 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
-import {getRecipes} from '../services/recipes';
-const recipes=await getRecipes("","3");
-console.log(recipes)
+import FamousRecipes from '../components/FamousRecipes.astro';
+
 ---
 
 <Layout title="Welcome to Astro.">
-	<main>
+	<main class="container mx-auto">
 		<Hero></Hero>
+		<FamousRecipes>
+		</FamousRecipes>
 	</main>
 </Layout>
 
