@@ -21,7 +21,9 @@ const { title } = Astro.props;
 	</head>
 	<body>
 		<Header></Header>
-		<slot />
+		<main class="container mx-auto [grid-area:main]">
+			<slot />
+		</main>
 		<Footer></Footer>
 	</body>
 	<script is:inline src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
