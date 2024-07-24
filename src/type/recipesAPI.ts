@@ -5,15 +5,13 @@
 //   const recipesAPI = Convert.toRecipesAPI(json);
 
 export type RecipesAPI = {
-  recipes: Recipes;
+  recipes: Recipe[];
   total: number;
   skip: number;
   limit: number;
 };
-export interface Recipes {
-  recipes: Recipe[];
-}
-export interface Recipe {
+
+export type Recipe ={
   id: number;
   name: string;
   ingredients: string[];

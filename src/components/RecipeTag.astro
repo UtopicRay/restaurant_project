@@ -1,0 +1,36 @@
+---
+import { getRecipes } from "../services/recipes"
+
+const recipes=await getRecipes("","10");
+---
+
+<nav class="w-1/2 mx-auto flex rounded-full bg-yellow-300 p-4 overflow-hidden">
+    <div class="slider w-full h-auto flex">
+        {recipes.map((recipe)=>(     
+            <div class="mr-2">
+              <img class="max-w-24 h-auto rounded-full  " src={recipe.image} alt="Medium avatar">
+              <p class="text-center text-white font-bold">{recipe.tags[0]}</p>
+            </div>
+        ))}   
+        {recipes.map((recipe)=>(     
+            <div class="mr-2">
+              <img class="max-w-24 h-auto rounded-full  " src={recipe.image} alt="Medium avatar">
+              <p class="text-center font-bold text-white">{recipe.tags[0]}</p>
+            </div>
+        ))} 
+    </div> 
+</nav>
+
+<style>
+.slider{
+    animation: carousel 15s linear infinite;
+    }
+ @keyframes carousel {
+        0%{
+            transform: translateX(0);
+        }
+        100%{
+            transform: translateX(calc(-90px*10));
+        }
+    }
+</style>
