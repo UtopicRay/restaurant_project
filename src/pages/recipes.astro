@@ -1,51 +1,64 @@
 ---
+import SimilarRecipe from "../components/SimilarRecipe.astro";
 import Layout from "../layouts/Layout.astro";
-import {getRecipeById} from '../services/recipes';
-const recipe=await getRecipeById("1");
+import { getRecipeById, getRecipesByTags } from "../services/recipes";
+import type { Recipe } from "../type/recipesAPI";
+const recipe = await getRecipeById("1");
+const recipes = await getRecipesByTags(recipe.tags[1]) as Recipe[];
 ---
 
 <Layout title="Producto">
-    <main class="container mx-auto h-full">
-        <section class="flex flex-wrap place-items-center mx-auto">
-            <div class="">
-                <img src={recipe.image} class="md:max-w-[400px] max-w-full h-auto mr-2 rounded-xl" alt="foto de chefs">
-            </div>
-            <div class="md:max-w-[80%] max-w-full text-left ml-4">
-            <div class="">
-                <h1 class="text-7xl font-bold text-orange-500 mb-4">
-                {recipe.name}
-             </h1>
-             {recipe.tags.map(info=>(
-                 <span class="bg-blue-100 text-blue-800 hover:bg-blue-900 hover:text-white font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-blue-400 border border-blue-400">{info}</span>
-             ))}
-             </div>
-             <div class="flex flex-wrap mt-10 gap-x-8">
-                <div> 
-                    <h2>Instructions</h2>
-                    <ol class="list-decimal list-inside">
-                     {recipe.instructions.map(instruction=>(
-                        <li>{instruction}</li>
-                     ))}
-                    </ol></div>
-                <div>
-                    <h2>The Ingredients</h2>
-                    <ul class="ingredients">
-                     {recipe.ingredients.map(ingredient=>(
-                        <li>{ingredient}</li>
-                     ))}
-                    </ul>
-                </div>    
-             </div>
-             <div class="text-center text-3xl flex  w-full my-5 gap-4">
-                <h1><span class="font-bold text-5xl">{recipe.servings}</span> servings</h1>
-                <h1><span class="font-bold text-5xl">{recipe.cookTimeMinutes}</span> minutes</h1>
-             </div>
+  <main class="container mx-auto place-items-center flex h-screen">
+    <section class="flex flex-wrap place-items-center mx-auto">
+      <div class="">
+        <img
+          src={recipe.image}
+          class="md:max-w-[400px] max-w-full h-auto mr-2 rounded-xl"
+          alt="foto de chefs"
+        />
+      </div>
+      <div class="md:max-w-[80%] max-w-full text-left ml-4">
+        <div class="">
+          <h1 class="text-7xl font-bold text-orange-500 mb-4">
+            {recipe.name}
+          </h1>
+          {
+            recipe.tags.map((info) => (
+              <span class="bg-blue-100 text-blue-800 hover:bg-blue-900 hover:text-white font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-blue-400 border border-blue-400">
+                {info}
+              </span>
+            ))
+          }
         </div>
-        </section>
-        </main>
+        <div class="flex flex-wrap mt-10 gap-x-8">
+          <div>
+            <h2>Instructions</h2>
+            <ol class="list-decimal list-inside">
+              {recipe.instructions.map((instruction) => <li>{instruction}</li>)}
+            </ol>
+          </div>
+          <div>
+            <h2>The Ingredients</h2>
+            <ul class="ingredients">
+              {recipe.ingredients.map((ingredient) => <li>{ingredient}</li>)}
+            </ul>
+          </div>
+        </div>
+        <div class="text-center text-3xl flex w-full my-5 gap-4">
+          <h1>
+            <span class="font-bold text-5xl">{recipe.servings}</span> servings
+          </h1>
+          <h1>
+            <span class="font-bold text-5xl">{recipe.cookTimeMinutes}</span> minutes
+          </h1>
+        </div>
+      </div>
+      <SimilarRecipe recipes={recipes}></SimilarRecipe>
+    </section>
+  </main>
 </Layout>
 <style>
-    h2{
-        @apply text-2xl text-orange-500 font-semibold
-    }
+  h2 {
+    @apply text-2xl text-orange-500 font-semibold;
+  }
 </style>

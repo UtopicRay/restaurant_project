@@ -12,3 +12,8 @@ export async function getRecipeById(id:string) {
   const recipe=await response.json() as Recipe
   return recipe;
 }
+export async function getRecipesByTags(id:string){
+const response=await fetch('https://dummyjson.com/recipes/tag/Pakistani')
+const {recipes}=await response.json() ;
+return recipes;
+}
