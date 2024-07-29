@@ -17,3 +17,8 @@ const response=await fetch('https://dummyjson.com/recipes/tag/Pakistani')
 const {recipes}=await response.json() ;
 return recipes;
 }
+export async function getAllRecipes(){
+  const response=await fetch('https://dummyjson.com/recipes');
+    const {recipes}=await response.json() as RecipesAPI;
+    return recipes
+}
