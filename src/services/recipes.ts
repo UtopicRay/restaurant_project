@@ -22,3 +22,8 @@ export async function getAllRecipes(){
     const {recipes}=await response.json() as RecipesAPI;
     return recipes
 }
+export async function getAllTagsRecipes(){
+  const response=await fetch('https://dummyjson.com/recipes/tags');
+    const tags=await response.json() as string[];
+    return tags
+}
