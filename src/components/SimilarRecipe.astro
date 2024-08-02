@@ -12,7 +12,7 @@ const { recipes } = Astro.props;
   <div class="flex gap-x-2">
     {
       recipes.map((recipe: Recipe) => (
-        <a href="#" class="hover:scale-110 duration-200 ">
+        <a href={`/recipes/${recipe.id}`} class="hover:scale-110 duration-200 ">
           <div
             id={`tooltip-${recipe.name}`}
             role="tooltip"
