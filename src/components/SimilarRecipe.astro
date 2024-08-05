@@ -7,9 +7,9 @@ interface Props {
 const { recipes } = Astro.props;
 ---
 
-<div class="flex my-2 justify-center items-center w-full">
-  <h1 class="text-orange-500 font-bold text-3xl mr-4">Similar Recipes</h1>
-  <div class="flex gap-2 flex-wrap ">
+<div class="grid grid-col-1 md:grid-col-2 my-2 w-full">
+  <h1 class="text-orange-500 font-bold text-3xl mr-4 text-center">Similar Recipes</h1>
+  <div class="flex gap-2 flex-wrap justify-center my-2 ">
     {
       recipes.map((recipe: Recipe) => (
         <a href={`/recipes/${recipe.id}`} class="hover:scale-110 duration-200 ">
