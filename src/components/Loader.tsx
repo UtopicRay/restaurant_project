@@ -1,6 +1,6 @@
 import "../loader.css";
 
-function Loader({ title }: { title: string }) {
+function Loader() {
   return (
     <div class="loader loader--style2" title="1">
       <svg
