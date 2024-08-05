@@ -1,0 +1,83 @@
+---
+import SimilarRecipe from "../../components/SimilarRecipe.astro";
+import Layout from "../../layouts/Layout.astro";
+import { getRecipeById, getRecipesByTags } from "../../services/recipes";
+import type { Recipe } from "../../type/recipesAPI";
+
+export const prerender = false;
+const { id } = Astro.params;
+let recipe;
+let recipes;
+if (id) {
+  recipe = (await getRecipeById(id)) as Recipe;
+  recipes = (await getRecipesByTags(recipe.tags[1])) as Recipe[];
+}
+---
+
+<Layout title="Producto">
+  <section class="flex flex-col place-items-center mx-auto lg:p-0 p-4">
+    <article class="grid lg:grid-cols-3 grid-cols-1 place-items-center">
+      <div class="col-span-auto ">
+        <img
+          src={recipe?.image}
+          class=" max-w-full h-auto mr-2 rounded-xl"
+          alt="foto de chefs"
+        />
+      </div>
+      <div class="col-span-2 max-w-full text-left ml-4">
+        <div class="">
+          <h1 class="md:text-7xl text-4xl font-bold text-orange-500 mb-4">
+            {recipe?.name}
+          </h1>
+          <div class="flex flex-wrap gap-2">
+            {
+              recipe?.tags.map((info) => (
+                <span class="bg-blue-100 text-blue-800 hover:bg-blue-900 hover:text-white font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-blue-400 border border-blue-400">
+                  {info}
+                </span>
+              ))
+            }
+          </div>
+        </div>
+        <div class="grid lg:grid-cols-2 grid-cols-1 mt-10 gap-x-8">
+          <div>
+            <h2>Instructions</h2>
+            <ol class="list-decimal list-inside space-y-1">
+              {
+                recipe?.instructions.map((instruction) => (
+                  <li>{instruction}</li>
+                ))
+              }
+            </ol>
+          </div>
+          <div>
+            <h2>The Ingredients</h2>
+            <ul class="space-y-1 list-disc list-inside dark:text-gray-400">
+              {recipe?.ingredients.map((ingredient) => <li>{ingredient}</li>)}
+            </ul>
+          </div>
+        </div>
+        <div
+          class="text-center text-3xl flex flex-wrap w-full my-5 gap-4 items-center"
+        >
+          <h1>
+            <span class="font-bold text-5xl">{recipe?.servings}</span> servings
+          </h1>
+          <h1>
+            <span class="font-bold text-5xl">{recipe?.cookTimeMinutes}</span> minutes
+          </h1>
+          <h1 class="mt-3 font-bold">
+            Difficulty: <span class="text-orange-400">{recipe?.difficulty}</span
+            >
+          </h1>
+        </div>
+      </div>
+    </article>
+    <SimilarRecipe recipes={recipes} />
+  </section>
+</Layout>
+<style>
+  h2 {
+    @apply text-2xl text-orange-500 font-semibold;
+  }
+</style>

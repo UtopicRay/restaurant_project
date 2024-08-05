@@ -1,6 +1,6 @@
 ---
 import { getRecipes } from "../services/recipes";
-import Card from "./Card.astro";
+import Card from "./Card";
 import RecipeTag from "./RecipeTag.astro";
 const recipes=await getRecipes("","10");
 const recetas=recipes.slice(0,4);
@@ -15,7 +15,7 @@ const recetas=recipes.slice(0,4);
         </div>    
         <div class="flex flex-wrap gap-4 justify-center">
             {recetas.map((recipe)=>(
-                <Card name={recipe.name} img={recipe.image} description={recipe.tags}></Card>
+                <Card name={recipe.name} img={recipe.image} description={recipe.tags} id={recipe.id.toString()} client:visible></Card>
                 ))}
         </div>
     </article>
