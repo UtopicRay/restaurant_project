@@ -11,7 +11,3 @@
     align-items:center;
   }
   
-  svg path,
-  svg rect{
-    fill: #FF6700;
-  }
