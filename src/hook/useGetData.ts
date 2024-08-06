@@ -12,7 +12,16 @@ export function useGetData() {
       }`
     )
       .then((response) => response.json())
-      .then((data) => setData(data)).finally(()=>setIsLoading(false)).catch((error:Error)=>setError(error.message()));
+      .then((data) => setData(data))
+      .finally(() => setIsLoading(false))
+      .catch((error: Error) => setError(error.message()));
   }
-  return { data,isLoading,error,getRecipes };
+  async function getAllRecipes() {
+    await fetch("https://dummyjson.com/recipes")
+      .then((res) => res.json())
+      .then((data)=>setData(data.recipes))
+      .finally(()=>setIsLoading(false))
+      .catch((error: Error) => setError(error.message()));
+  }
+  return { data, isLoading, error, getRecipes,getAllRecipes };
 }
