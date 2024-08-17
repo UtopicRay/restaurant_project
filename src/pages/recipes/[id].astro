@@ -6,11 +6,12 @@ import type { Recipe } from "../../type/recipesAPI";
 
 export const prerender = false;
 const { id } = Astro.params;
-let recipe;
-let recipes;
+let recipe:Recipe|undefined;
+let recipes:Recipe[]|undefined;
 if (id) {
-  recipe = (await getRecipeById(id)) as Recipe;
-  recipes = (await getRecipesByTags(recipe.tags[1])) as Recipe[];
+  recipe = (await getRecipeById(id));
+  recipes = (await getRecipesByTags(recipe.tags[1]));
+  recipes=recipes?.filter(aux=>recipe?.id !== aux.id);
 }
 ---
 
@@ -73,7 +74,7 @@ if (id) {
         </div>
       </div>
     </article>
-    <SimilarRecipe recipes={recipes} />
+    {recipes?(<SimilarRecipe recipes={recipes} />):""}
   </section>
 </Layout>
 <style>
