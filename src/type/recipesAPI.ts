@@ -10,7 +10,10 @@ export type RecipesAPI = {
   skip: number;
   limit: number;
 };
-
+export type Images ={
+  img:string,
+  alt:string,
+}
 export type Recipe ={
   id: number;
   name: string;
