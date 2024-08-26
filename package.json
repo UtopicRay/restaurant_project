@@ -13,6 +13,7 @@
     "@astrojs/check": "^0.8.2",
     "@astrojs/preact": "^3.5.1",
     "@astrojs/tailwind": "^5.1.0",
+    "@emailjs/browser": "^4.4.1",
     "astro": "^4.12.2",
     "flowbite": "^2.4.1",
     "motion": "^10.18.0",
