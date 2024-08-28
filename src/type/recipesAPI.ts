@@ -4,6 +4,7 @@
 //
 //   const recipesAPI = Convert.toRecipesAPI(json);
 
+
 export type RecipesAPI = {
   recipes: Recipe[];
   total: number;
@@ -11,7 +12,7 @@ export type RecipesAPI = {
   limit: number;
 };
 export type Images ={
-  img:string,
+  img:any,
   alt:string,
 }
 export type Recipe ={
