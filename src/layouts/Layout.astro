@@ -1,13 +1,13 @@
 ---
 import Footer from "../components/Footer";
 import Header from "../components/Header.tsx";
-
+import { ViewTransitions } from 'astro:transitions';
 interface Props {
   title: string;
 }
 
 const { title } = Astro.props;
-import { ViewTransitions } from 'astro:transitions';
+
 ---
 
 <!doctype html>
@@ -26,12 +26,12 @@ import { ViewTransitions } from 'astro:transitions';
     <main class="container mx-auto">
       <slot />
     </main>
-    <Footer />
+    <Footer client:visible />
+    <script
+        is:inline
+        src="node_modules/flowbite/dist/flowbite.min.js"
+    ></script>
   </body>
-  <script
-    is:inline
-    src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"
-  ></script>
 </html>
 <style is:global>
   :root {
@@ -52,7 +52,6 @@ import { ViewTransitions } from 'astro:transitions';
     scroll-behavior: smooth;
   }
   body {
-    min-height: 100vh;
     display:grid;
     grid-template-rows:auto 1fr auto;
   }
@@ -74,4 +73,5 @@ import { ViewTransitions } from 'astro:transitions';
   .active {
     @apply block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-orange-400 md:p-0 dark:text-white md:dark:text-blue-500
   }
+
 </style>

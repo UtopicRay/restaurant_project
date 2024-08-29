@@ -1,0 +1,72 @@
+---
+import type {Images} from "../type/recipesAPI.ts";
+import {Image} from "astro:assets";
+interface Props {
+    images: Images[];
+}
+const {images} = Astro.props
+---
+<div class="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item">
+            <Image src={images[0].img} class="w-full h-96 rounded-xl"
+                   alt={images[0].alt}/>
+        </div>
+        <div class="carousel-item">
+            <Image src={images[1].img} class="w-full h-96 rounded-xl"
+                   alt={images[1].alt}/>
+        </div>
+        <div class="carousel-item">
+            <Image src={images[2].img} class="w-full h-96 rounded-xl"
+                   alt={images[2].alt}/>
+        </div>
+
+        {images.map((image: Images) => (
+                        <div class="carousel-item">
+                            <Image src={image.img} class="w-full h-96 rounded-xl"
+                                   alt={image.alt}/>
+                        </div>
+            )
+        )
+        }
+    </div>
+</div>
+<style>
+    .carousel {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .carousel-inner {
+        display: flex;
+        width: 100%;
+        animation: slide 15s infinite;
+    }
+
+    .carousel-item {
+        width: 100%;
+        flex: 1 0 100%;
+        padding: 10px;
+    }
+
+    .carousel img {
+        width: 100%;
+        display: block;
+    }
+
+    @keyframes slide {
+        0% {
+            transform: translateX(0);
+        }
+        33% {
+            transform: translateX(-100%);
+        }
+        66% {
+            transform: translateX(-200%);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+</style>

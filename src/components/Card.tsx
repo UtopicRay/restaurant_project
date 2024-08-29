@@ -1,3 +1,6 @@
+import {inView} from "motion";
+import {useEffect} from "preact/hooks";
+
 function Card({
   img,
   name,
@@ -9,8 +12,15 @@ function Card({
   description: string[];
   id:string
 }) {
+  useEffect(() => {
+    inView("#card",(card)=>{
+      card.target.classList.add('animate-fade-up');
+      card.target.classList.add('animate-duration-400');
+    })
+  }, []);
+
   return (
-    <div class="p-4 border-orange-400 border-[1px] rounded-lg max-w-[300px]">
+    <div id="card" class="p-4 border-orange-400 border-[1px] rounded-lg max-w-[300px]">
       <img src={img} class="max-w-full h-auto rounded-lg" />
       <div class="mt-4 flex flex-col">
         <h1 class="text-2xl font-bold text-ellipsis overflow-hidden text-nowrap">

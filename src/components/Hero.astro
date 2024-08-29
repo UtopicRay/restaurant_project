@@ -1,4 +1,8 @@
-<section class="grid md:grid-cols-2 grid-cols-1 place-items-center px-10 mx-auto">
+---
+import {Image} from "astro:assets";
+import chefImage from "../assets/img/R.png"
+---
+<section class="grid md:grid-cols-2 grid-cols-1 place-items-center px-10 mx-auto lg:h-screen h-auto">
     <article class="md:max-w-[80%] max-w-full">
         <h1 class="text-6xl font-bold">
             Embark on a Cosmic Culinary Journey at Astro <span class="text-orange-400">Restuarant!</span>
@@ -8,7 +12,7 @@
         </p>
     </article>
     <article class="">
-        <img src="/R.png" class="max-w-full h-auto mr-2" alt="foto de chefs">
+        <Image src={chefImage} class="max-w-full h-auto mr-2" alt="foto de chefs"/>
     </article>
 </section>
 <style>

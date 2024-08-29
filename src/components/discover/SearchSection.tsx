@@ -6,7 +6,7 @@ import {useGetData} from "../../hook/useGetData";
 import type {Recipe} from "../../type/recipesAPI";
 
 function SearchSection({tags}: { tags: string[] }) {
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState<Recipe[]>([]);
     const {data: recipes, isLoading, error, getAllRecipes} = useGetData();
     const [filterRecipes, setFilterRecipes] = useState({
         name: "",
@@ -17,7 +17,6 @@ function SearchSection({tags}: { tags: string[] }) {
         await getAllRecipes();
     }, []);
     useEffect(() => {
-        //@ts-ignore
         setProducts(recipes);
     }, [recipes]);
     if (isLoading) {
@@ -30,8 +29,8 @@ function SearchSection({tags}: { tags: string[] }) {
 
     function handleClick(e:any) {
         e.preventDefault();
-        //@ts-ignore
-        let filteredProducts = [...recipes];
+
+        let filteredProducts:Recipe[]|undefined = [...recipes];
 
         if (filterRecipes.tag !== "All") {
             filteredProducts = filteredProducts.filter((product: Recipe) =>

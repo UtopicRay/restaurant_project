@@ -6,6 +6,7 @@ function Footer() {
 
     const sendEmail = (e: any) => {
         e.preventDefault();
+        console.log("Funciona");
         emailjs
             .sendForm("service_yen6efm", "template_f3b2eq4", form.current, {
                 publicKey: "aKSBVKOiowvq4CCQk",
@@ -13,13 +14,15 @@ function Footer() {
             .then(
                 () => {
                     console.log("SUCCESS!");
+
                 },
                 (error) => {
                     console.log("FAILED...", error.text);
                 }
             );
     };
-    // @ts-ignore
+
+
     return (
         <footer id="contact"
                 className="w-full p-4 bg-green-900 border-t border-gray-200 shadow  md:p-6 md:pt-10 dark:bg-gray-800 dark:border-gray-600 divide-y divide-gray-300 mt-auto">
@@ -84,4 +87,4 @@ function Footer() {
     )
 }
 
-export default Footer
+export default Footer;
