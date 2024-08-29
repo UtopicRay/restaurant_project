@@ -55,7 +55,7 @@ import Layout from "../layouts/Layout.astro";
   }
   .error span.triangle    /*Contrall*/ {
     top: 70%;
-    right: 0%;
+    right: 0;
     border-left: 20px solid #535353;
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent;
@@ -78,8 +78,8 @@ import Layout from "../layouts/Layout.astro";
     overflow: hidden;
     position: relative;
     box-shadow:
-      inset 20px 0px 20px -15px rgba(150, 150, 150, 0.8),
-      20px 0px 20px -15px rgba(150, 150, 150, 0.8);
+      inset 20px 0 20px -15px rgba(150, 150, 150, 0.8),
+      20px 0 20px -15px rgba(150, 150, 150, 0.8);
   }
 
   .error .clip:nth-of-type(3) .shadow:after,
@@ -87,7 +87,7 @@ import Layout from "../layouts/Layout.astro";
     content: "";
     position: absolute;
     right: -8px;
-    bottom: 0px;
+    bottom: 0;
     z-index: 9999;
     height: 100%;
     width: 10px;
@@ -219,21 +219,21 @@ import Layout from "../layouts/Layout.astro";
   } /*done*/
 
   .no-padding-left {
-    padding-left: 0px;
+    padding-left: 0;
   } /*done*/
   .no-padding-right {
-    padding-right: 0px;
+    padding-right: 0;
   } /*done*/
   .no-vertical-padding {
-    padding-top: 0px;
-    padding-bottom: 0px;
+    padding-top: 0;
+    padding-bottom: 0;
   }
   .no-horizontal-padding {
-    padding-left: 0px;
-    padding-right: 0px;
+    padding-left: 0;
+    padding-right: 0;
   }
   .no-padding {
-    padding: 0px;
+    padding: 0;
   } /*done*/
   /* Padding Section*/
 
@@ -262,26 +262,26 @@ import Layout from "../layouts/Layout.astro";
     margin: 10px;
   } /*done*/
   .no-margin {
-    margin: 0px;
+    margin: 0;
   } /*done*/
 
   .no-vertical-margin {
-    margin-top: 0px;
-    margin-bottom: 0px;
+    margin-top: 0;
+    margin-bottom: 0;
   }
   .no-horizontal-margin {
-    margin-left: 0px;
-    margin-right: 0px;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .inside-col-shrink {
-    margin: 0px 20px;
+    margin: 0 20px;
   } /*done - For the inside sections that has also Title section*/
   /* Margin section */
 
   hr {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     border-top: 1px dashed #999;
   }
 </style>
@@ -291,13 +291,15 @@ import Layout from "../layouts/Layout.astro";
             "use strict";
             return Math.floor(Math.random() * 9)+1;
         }
-            var loop1,loop2,loop3,time=30, i=0, number, selector3 = document.querySelector('.thirdDigit'), selector2 = document.querySelector('.secondDigit'),
-                selector1 = document.querySelector('.firstDigit');
+        //@ts-ignore
+            var loop1,loop2,loop3,time=30, i=0, selector3:any = document.querySelector('.thirdDigit'), selector2:any = document.querySelector('.secondDigit'),
+                selector1:any = document.querySelector('.firstDigit');
             loop3 = setInterval(function()
             {
               "use strict";
                 if(i > 40)
                 {
+                  //@ts-ignore
                     clearInterval(loop3);
                     selector3.textContent = 4;
                 }else
@@ -311,6 +313,7 @@ import Layout from "../layouts/Layout.astro";
               "use strict";
                 if(i > 80)
                 {
+                  //@ts-ignore
                     clearInterval(loop2);
                     selector2.textContent = 0;
                 }else
@@ -324,6 +327,7 @@ import Layout from "../layouts/Layout.astro";
               "use strict";
                 if(i > 100)
                 {
+                  //@ts-ignore
                     clearInterval(loop1);
                     selector1.textContent = 4;
                 }else

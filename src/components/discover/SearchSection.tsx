@@ -17,6 +17,7 @@ function SearchSection({tags}: { tags: string[] }) {
         await getAllRecipes();
     }, []);
     useEffect(() => {
+        //@ts-ignore
         setProducts(recipes);
     }, [recipes]);
     if (isLoading) {
@@ -29,7 +30,7 @@ function SearchSection({tags}: { tags: string[] }) {
 
     function handleClick(e:any) {
         e.preventDefault();
-
+        //@ts-ignore
         let filteredProducts:Recipe[]|undefined = [...recipes];
 
         if (filterRecipes.tag !== "All") {
