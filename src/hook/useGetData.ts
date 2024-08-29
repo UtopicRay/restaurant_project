@@ -23,5 +23,5 @@ export function useGetData() {
       .finally(()=>setIsLoading(false))
       .catch((error: Error) => setError(error.message));
   }
-  return { data, isLoading, error, getRecipes,getAllRecipes };
+  return { data, isLoading, error,getAllRecipes };
 }
