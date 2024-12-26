@@ -9,21 +9,21 @@ export async function getRecipes(name:string,limit:string) {
 }
 export async function getRecipeById(id:string) {
   const response=await fetch(`https://dummyjson.com/recipes/${id}`)
-  const recipe=await response.json() as Recipe
-  return recipe;
+  return await response.json() as Recipe
+
 }
 export async function getRecipesByTags(id:string){
-const response=await fetch('https://dummyjson.com/recipes/tag/Pakistani')
+const response=await fetch(`https://dummyjson.com/recipes/tag/${id}`)
 const {recipes}=await response.json() ;
 return recipes;
 }
 export async function getAllRecipes(){
-  const response=await fetch('https://dummyjson.com/recipes');
+  const response=await fetch('https://dummyjson.com/recipes?limit=50');
     const {recipes}=await response.json() as RecipesAPI;
     return recipes
 }
 export async function getAllTagsRecipes(){
   const response=await fetch('https://dummyjson.com/recipes/tags');
-    const tags=await response.json() as string[];
-    return tags
+    return await response.json() as string[];
+
 }
