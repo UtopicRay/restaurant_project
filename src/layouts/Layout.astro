@@ -17,7 +17,9 @@ const { title } = Astro.props;
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/src/assets/img/logo.png" />
-    <meta name="AstroRestuarant" content={Astro.generator} />
+    <meta name="AstroRestuarant"
+          content='Web donde puedes encontrar tus recetas favoritas. No dudes en visitar este maravilloso sitio'/>
+    <link rel="stylesheet" href="/src/assets/global.css"/>
     <title>{title}</title>
     <ViewTransitions />
   </head>
@@ -27,52 +29,9 @@ const { title } = Astro.props;
       <slot />
     </main>
     <Footer client:visible />
-    <script
-        is:inline
-        src="node_modules/flowbite/dist/flowbite.min.js"
-    ></script>
   </body>
 </html>
-<style is:global>
-  :root {
-    --accent: 136, 58, 234;
-    --accent-light: 224, 204, 250;
-    --accent-dark: 49, 10, 101;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
-      white 60%
-    );
-  }
-  html {
-    font-family: system-ui, sans-serif;
-    background: var(--accent-light);
-    background-size: 224px;
-    scroll-behavior: smooth;
-  }
-  body {
-    min-height: 100vh;
-    display:grid;
-    grid-template-rows:auto 1fr auto;
-  }
-  code {
-    font-family:
-      Menlo,
-      Monaco,
-      Lucida Console,
-      Liberation Mono,
-      DejaVu Sans Mono,
-      Bitstream Vera Sans Mono,
-      Courier New,
-      monospace;
-  }
-  .no_active {
-    @apply block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-orange-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent;
-  }
-
-  .active {
-    @apply block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-orange-400 md:p-0 dark:text-white md:dark:text-blue-500
-  }
-
-</style>
+<script>
+  import {initFlowbite} from "flowbite";
+  initFlowbite()
+</script>
