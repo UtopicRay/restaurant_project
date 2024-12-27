@@ -19,7 +19,7 @@ function Header() {
   {
     id:"discover_link",
     name:"Discover",
-    href:"/discover"
+    href:"/discover/1"
   },
   {
     name:"Contact",

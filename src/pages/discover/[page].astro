@@ -1,0 +1,42 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import chef_banner2 from "@/assets/img/chef_banner2.png";
+import designer from "@/assets/img/Designer.jpeg"
+import designer2 from "@/assets/img/Designer(1).jpeg"
+import SearchSection from "@/components/discover/SearchSection";
+import Carousel from "@/components/Carousel.astro";
+import type {Images} from "@/type/recipesAPI";
+import {getAllRecipes, getAllTagsRecipes} from "@/services/recipes";
+import PaginationControls from "../../components/PaginationControls.astro";
+import type {Page} from "astro";
+
+const images: Images[] = [{
+    img: designer,
+    alt: "chef_banner image",
+}, {
+    img: chef_banner2,
+    alt: "chef_banner image",
+}, {
+    img: designer2,
+    alt: "restaurant_banner image",
+}]
+const tags = await getAllTagsRecipes();
+const allTags = ["All", ...tags];
+
+//@ts-ignore
+export const getStaticPaths = (async ({paginate}) => {
+    const recipes = await getAllRecipes()
+    return paginate(recipes, {pageSize: 20});
+//@ts-ignore
+}) satisfies GetStaticPaths;
+const {page} = Astro.props as {page:Page};
+---
+
+<Layout title="Discover your Recipe">
+    <header>
+        <Carousel images={images}></Carousel>
+    </header>
+    <SearchSection client:visible tags={allTags} recipes={page.data}/>
+  <PaginationControls page={page.currentPage} nextPage={page.url.next} previousPage={page.url.prev}></PaginationControls>
+</Layout>
+

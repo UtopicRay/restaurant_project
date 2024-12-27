@@ -1,7 +1,6 @@
 import { defineConfig, passthroughImageService } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import preact from "@astrojs/preact";
-import netlify from "@astrojs/netlify";
 
 import vercel from "@astrojs/vercel/serverless";
 
@@ -10,7 +9,7 @@ export default defineConfig({
   integrations: [tailwind(), preact({
     compat: true
   })],
-  output: "hybrid",
+  output: "static",
   image: {
     service: passthroughImageService()
   },
