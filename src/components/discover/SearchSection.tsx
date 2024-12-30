@@ -1,57 +1,31 @@
 import Card from "../Card";
-import {useEffect, useState} from "preact/hooks";
-import type {Recipe} from "../../type/recipesAPI";
+import {useState} from "preact/hooks";
+import type {Recipe} from "@/type/recipesAPI";
+import {useSearchRecipe} from "@/hook/useSearchRecipe.ts";
 
-function SearchSection({tags,recipes}: { tags: string[],recipes: Recipe[] }) {
-    const [products, setProducts] = useState<Recipe[]|undefined>([]);
+function SearchSection({tags,recipes,allRecipes}: { tags: string[],recipes: Recipe[],allRecipes:Recipe[] }) {
+    const [products, searchProduct] = useSearchRecipe({recipe:recipes});
     const [filterRecipes, setFilterRecipes] = useState({
         name: "",
         tag: "All",
     });
 
-    useEffect(() => {
-        setProducts(recipes)
-    }, [recipes]);
-
-  /*  if (isLoading) {
-        return <Loader></Loader>;
-    }
-    if (error) {
-        return <Error></Error>;
-    }*/
-
-
     function handleClick(e:any) {
         e.preventDefault();
-        let filteredProducts: Recipe[] = [...recipes];
-        if (filterRecipes.tag !== "All") {
-            filteredProducts = filteredProducts.filter((product: Recipe) =>
-                product.tags.includes(filterRecipes.tag)
-            );
-        }
-        if (filterRecipes.name !== "") {
-            filteredProducts = filteredProducts.filter((product: Recipe) =>
-                product.name.toLowerCase().includes(filterRecipes.name.toLowerCase())
-            );
-        }
-        setProducts([...filteredProducts]);
+        searchProduct({filterRecipe:filterRecipes,allRecipes})
     }
 
-    //@ts-ignore
-    function handleChange(e) {
+    function handleChange(e:any) {
         e.preventDefault();
         setFilterRecipes({...filterRecipes, name: e.target.value});
-        console.log(filterRecipes.name);
     }
 
-    //@ts-ignore
-    function handleChangeSelect(e) {
+    function handleChangeSelect(e:any) {
         e.preventDefault();
         setFilterRecipes((prevState) => ({
             ...prevState,
             tag: e.target.value,
         }));
-        console.log(filterRecipes.tag);
     }
 
     return (
@@ -113,11 +87,11 @@ function SearchSection({tags,recipes}: { tags: string[],recipes: Recipe[] }) {
             </header>
             <div className="flex flex-wrap justify-center gap-3 my-2 place-items-center">
                 {products?.map((recipe: Recipe) => (
-                    <Card
+                    <Card key={recipe.id}
                         name={recipe.name}
                         img={recipe.image}
                         description={recipe.tags}
-                        id={recipe.id.toString()}
+                        id={recipe.id}
                     />
                 ))}
             </div>

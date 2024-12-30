@@ -1,9 +1,3 @@
-// To parse this data:
-//
-//   import { Convert, RecipesAPI } from "./file";
-//
-//   const recipesAPI = Convert.toRecipesAPI(json);
-
 
 export type RecipesAPI = {
   recipes: Recipe[];
