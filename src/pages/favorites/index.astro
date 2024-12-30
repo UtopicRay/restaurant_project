@@ -1,0 +1,13 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import FavoriteList from "@/components/favorites/FavoriteList";
+---
+<Layout title="Favorites Recipies">
+    <section class="px-3 mt-4 font-semibold">
+        <div class="py-2 border-b-2 border-black">
+            <h2 class="text-4xl">Favorites</h2>
+        </div>
+          <FavoriteList client:only/>
+    </section>
+</Layout>
+<script></script>

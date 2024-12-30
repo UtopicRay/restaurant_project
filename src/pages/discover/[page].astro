@@ -22,11 +22,11 @@ const images: Images[] = [{
 }]
 const tags = await getAllTagsRecipes();
 const allTags = ["All", ...tags];
-
+const recipes = await getAllRecipes()
 //@ts-ignore
 export const getStaticPaths = (async ({paginate}) => {
-    const recipes = await getAllRecipes()
-    return paginate(recipes, {pageSize: 20});
+    const recipe = await getAllRecipes()
+    return paginate(recipe, {pageSize: 20});
 //@ts-ignore
 }) satisfies GetStaticPaths;
 const {page} = Astro.props as {page:Page};
@@ -36,7 +36,7 @@ const {page} = Astro.props as {page:Page};
     <header>
         <Carousel images={images}></Carousel>
     </header>
-    <SearchSection client:visible tags={allTags} recipes={page.data}/>
-  <PaginationControls page={page.currentPage} nextPage={page.url.next} previousPage={page.url.prev}></PaginationControls>
+    <SearchSection client:visible tags={allTags} recipes={page.data} allRecipes={recipes}/>
+  <PaginationControls page={page.currentPage} nextPage={page.url.next} previousPage={page.url.prev}/>
 </Layout>
 

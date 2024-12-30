@@ -2,16 +2,16 @@
 import {Image} from "astro:assets";
 import chefImage from "../assets/img/R.png"
 ---
-<section class="grid md:grid-cols-2 grid-cols-1 place-items-center px-10 mx-auto lg:h-screen h-auto">
+<section class="grid md:grid-cols-2 grid-cols-1 place-items-center px-10 mx-auto lg:h-screen h-auto mt-4 md:mt-0">
     <article class="md:max-w-[80%] max-w-full">
         <h1 class="text-6xl font-bold">
             Embark on a Cosmic Culinary Journey at Astro <span class="text-orange-400">Restuarant!</span>
         </h1>
-        <p class="mt-4">
+        <p class="mt-4 md:text-2xl text-lg font-semibold">
             Welcome to AstroRestuarant, where celestial flavors collide with earthly delights. Our cosmic menu features interstellar dishes crafted from the finest ingredients across the galaxy. From stardust-infused pastas to nebula-inspired desserts, every bite is an otherworldly experience. Join us under the starlit canopy and let your taste buds explore the universe!” 🌟🚀🪐
         </p>
     </article>
-    <article class="">
+    <article>
         <Image src={chefImage} class="max-w-full h-auto mr-2" alt="foto de chefs"/>
     </article>
 </section>

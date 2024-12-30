@@ -29,8 +29,8 @@ const recetas = recipes.slice(0, 4);
             name={recipe.name}
             img={recipe.image}
             description={recipe.tags}
-            id={recipe.id.toString()}
-            client:visible
+            id={recipe.id}
+            client:only
           />
         ))
       }
