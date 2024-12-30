@@ -21,6 +21,11 @@ function Header() {
     name:"Discover",
     href:"/discover/1"
   },
+    {
+      id:"favorite_link",
+      name:"Favorites",
+      href:"/favorites"
+    },
   {
     name:"Contact",
     href:"#contact"
@@ -28,10 +33,10 @@ function Header() {
 
   return (
     <nav className="w-full bg-white border-gray-200 dark:bg-gray-900">
-      <div className="flex flex-wrap items-center justify-between  p-4">
+      <div className="flex flex-wrap items-center justify-between p-4">
         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <img src={logo.src} className="h-10" alt="Flowbite Logo" />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+          <img src={logo.src} className="md:size-20 size-10" alt="Flowbite Logo" />
+          <span className="self-center text-3xl font-semibold whitespace-nowrap dark:text-white">
             Astro<span className="text-orange-400">Restuarant</span>
           </span>
         </a>
